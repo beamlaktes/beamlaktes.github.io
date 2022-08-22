@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Kelly Slab
+- Font Author: Copyright (c) 2011, Denis Masharov <denis.masharov@gmail.com>, with Reserved Font Names "Kelly", "Kelly Slab".
+- Font Source: http://fonts.gstatic.com/s/kellyslab/v11/-W_7XJX0Rz3cxUnJC5t6TkMBf50kbiM.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
