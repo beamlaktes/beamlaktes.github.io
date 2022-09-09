@@ -654,8 +654,6 @@ footer.footer.mt-auto.py-3.bg-light a {
     opacity: 0;
   }
   .pp a:before {
-    height: 265px !important;
-    width: 265px !important;
     content: "";
     border: 15px solid #e4ce06;
     border-radius: 50%;
