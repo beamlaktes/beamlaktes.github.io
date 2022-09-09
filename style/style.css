@@ -644,10 +644,31 @@ footer.footer.mt-auto.py-3.bg-light a {
   .pp img {
     width: 230 !important;
     height: 230 !important;
+    position: relative;
+    z-index: 9999;
+    border: 15px solid #e4ce06;
+    -webkit-animation: pulsate 4.9s ease-out;
+    animation: pulsate 4.9s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    opacity: 0;
   }
   .pp a:before {
     height: 265px !important;
     width: 265px !important;
+    content: "";
+    border: 15px solid #e4ce06;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    -webkit-animation: pulsate 4.9s ease-out;
+    animation: pulsate 4.9s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    opacity: 0;
+    z-index: 99;
+    left: 10px;
+    top: 10px;
   }
   .content {
     left: 247px !important;
