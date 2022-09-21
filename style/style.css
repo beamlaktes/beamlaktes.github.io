@@ -602,7 +602,7 @@ footer.footer.mt-auto.py-3.bg-light a {
   border-bottom: 1px solid #e4ce06;
 }
 
-@media only screen and (max-width 959px) {
+@media only screen and (max-width 768px){
   .w-auto {
     width: 630px !important;
   }
