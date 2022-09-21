@@ -606,6 +606,47 @@ footer.footer.mt-auto.py-3.bg-light a {
   .w-auto {
     width: 630px !important;
   }
+  .pp {
+  position: absolute;
+  top: 300px;
+  left: 300px !important;
+  transform: translateY(-50%);
+  padding: 10px;
+}
+  .content {
+  position: absolute;
+  top: 300px;
+  right: 250px;
+  transform: translateY(-50%);
+  background: #0000008c;
+  padding: 10px !important;
+}
+
+.content h1 {
+  color: white;
+  margin: 10px 0px 10px 10px;
+  font-size: 50px;
+}
+
+.content h3 {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: initial;
+}
+
+.content h4 {
+  color: white;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.newslatter form {
+  width: 280px;
+  max-width: 100%;
+  position: relative;
+}
+
   .navbar-toggler {
     background-color: #d9c51000 !important;
     border-radius: 0.25rem;
