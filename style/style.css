@@ -602,7 +602,7 @@ footer.footer.mt-auto.py-3.bg-light a {
   border-bottom: 1px solid #e4ce06;
 }
 
-@media only screen and (max-width 700px){
+@media only screen and (max-width: 900px) {
   .w-auto {
     width: 630px !important;
   }
@@ -653,7 +653,21 @@ footer.footer.mt-auto.py-3.bg-light a {
     animation-iteration-count: infinite;
     opacity: 0;
   }
- 
+  .pp a:before {
+    content: "";
+    border: 15px solid #e4ce06;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    -webkit-animation: pulsate 4.9s ease-out;
+    animation: pulsate 4.9s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    opacity: 0;
+    z-index: 99;
+    left: 10px;
+    top: 10px;
+  }
   .content {
     left: 247px !important;
     width: 372px !important;
@@ -710,6 +724,6 @@ footer.footer.mt-auto.py-3.bg-light a {
     margin: 10%;
   }
   button.btn-eml.btn-lg {
-    margin-left: 40% !important; 
+    margin-left: 40% !important;
   }
 }
