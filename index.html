@@ -701,8 +701,64 @@
 
     </section><!-- /Services Section -->
 
+    <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <p>Here are testimonials from my clients and coworkers sharing their experiences working with me.</p>
+      </div><!-- End Section Title -->
 
-   
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 40
+                },
+                "1200": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 1
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>I would like to provide a testimony for Mr. Beamlak  Tesfaye , who has consistently impressed us with his boundless energy, exceptional communication skills, and creative approach to problem-solving.  
+                    Mr. Beamlak's natural ability to engage with others and convey information in a clear and effective manner has been instrumental in driving successful outcomes for our organization, 
+                    making him a standout member of our team. We are grateful to have Mr. Beamlak  on our team and look forward to seeing their continued growth and success in the future.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <h3>Ephrata Meaza</h3>
+                <h4>HR Manager Sinopia</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
