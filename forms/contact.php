@@ -1,44 +1,49 @@
 <?php
-// contact_form.php (Backend Script)
+// Replace with your actual receiving email address
+$receiving_email_address = 'beamlaktesfaye08@gmail.com';
+
+// Check if the PHP Email Form library exists
+if (file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php')) {
+    include($php_email_form);
+} else {
+    die('Unable to load the "PHP Email Form" Library!');
+}
+
+// Create a new instance of PHP_Email_Form
+$contact = new PHP_Email_Form;
+$contact->ajax = true;
+
+// Set the recipient email address
+$contact->to = $receiving_email_address;
+
+// Validate and sanitize the input fields
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    header('Content-Type: application/json');
+    $contact->from_name = htmlspecialchars(strip_tags(trim($_POST['name'])));
+    $contact->from_email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
+    $contact->subject = htmlspecialchars(strip_tags(trim($_POST['subject'])));
 
-    $name = htmlspecialchars(trim($_POST['name']));
-    $email = htmlspecialchars(trim($_POST['email']));
-    $message = htmlspecialchars(trim($_POST['message']));
-
-    $response = [];
-
-    // Validation
-    if (empty($name) || empty($email) || empty($message)) {
-        $response['success'] = false;
-        $response['error'] = 'All fields are required.';
-        echo json_encode($response);
-        exit;
+    // Ensure all required fields are provided
+    if (empty($contact->from_name) || empty($contact->from_email) || empty($contact->subject) || empty($_POST['message'])) {
+        die('Please complete all fields.');
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $response['success'] = false;
-        $response['error'] = 'Invalid email address.';
-        echo json_encode($response);
-        exit;
-    }
+    // Add the messages
+    $contact->add_message($contact->from_name, 'From');
+    $contact->add_message($contact->from_email, 'Email');
+    $contact->add_message(htmlspecialchars(strip_tags(trim($_POST['message']))), 'Message', 10);
 
-    // Email settings
-    $to = 'beamlaktesfaye08@gmail.com'; // Replace with your email
-    $subject = 'New Contact Form Submission';
-    $emailBody = "Name: $name\nEmail: $email\nMessage: $message";
-    $headers = "From: $email";
+   
+    $contact->smtp = array(
+        'host' => 'smtp.example.com',
+        'username' => 'your_smtp_username',
+        'password' => 'your_smtp_password',
+        'port' => '587'
+    );
+    
 
-    if (mail($to, $subject, $emailBody, $headers)) {
-        $response['success'] = true;
-        $response['message'] = 'Thank you for your message. We will get back to you soon!';
-    } else {
-        $response['success'] = false;
-        $response['error'] = 'Failed to send email. Please try again later.';
-    }
-
-    echo json_encode($response);
-    exit;
+    // Send the email and echo the result
+    echo $contact->send();
+} else {
+    die('Invalid request.');
 }
 ?>
