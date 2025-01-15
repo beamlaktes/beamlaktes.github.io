@@ -1,35 +1,44 @@
 <?php
+// contact_form.php (Backend Script)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    header('Content-Type: application/json');
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'beamlaktesfaye08@gmail.com';
+    $name = htmlspecialchars(trim($_POST['name']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $message = htmlspecialchars(trim($_POST['message']));
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+    $response = [];
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+    // Validation
+    if (empty($name) || empty($email) || empty($message)) {
+        $response['success'] = false;
+        $response['error'] = 'All fields are required.';
+        echo json_encode($response);
+        exit;
+    }
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $response['success'] = false;
+        $response['error'] = 'Invalid email address.';
+        echo json_encode($response);
+        exit;
+    }
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+    // Email settings
+    $to = 'beamlaktesfaye08@gmail.com'; // Replace with your email
+    $subject = 'New Contact Form Submission';
+    $emailBody = "Name: $name\nEmail: $email\nMessage: $message";
+    $headers = "From: $email";
 
-  echo $contact->send();
+    if (mail($to, $subject, $emailBody, $headers)) {
+        $response['success'] = true;
+        $response['message'] = 'Thank you for your message. We will get back to you soon!';
+    } else {
+        $response['success'] = false;
+        $response['error'] = 'Failed to send email. Please try again later.';
+    }
+
+    echo json_encode($response);
+    exit;
+}
 ?>
